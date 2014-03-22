@@ -1,0 +1,131 @@
+================================================
+LIBOL - A Library for Online Learning Algorithms
+================================================                    
+
+                    V0.3.0
+                    
+Available at http://libol.stevenhoi.org
+
+Authors: Steven C.H. Hoi, Jialei Wang, Peilin Zhao
+
+	chhoi@ntu.edu.sg
+
+	Nanyang Technological University
+	School of Computer Engineering	
+	Singapore 639798	
+
+Scientific results produced using the software provided shall acknowledge
+the use of LIBOL. Please cite as
+
+    Steven C.H. Hoi, Jialei Wang, and Peilin Zhao.
+    LIBOL: A Library for Online Learning Algorithms.
+    Nanyang Technological University, 2012.
+    Software available at http://libol.stevenhoi.org/
+
+Moreover shall the author of LIBOL be informed about the publications.
+
+About LIBOL
+===========================================================================
+LIBOL is a simple package for solving large-scale online learning tasks. 
+This version has a total of 16 different linear online algorithms for binary classification, 
+and a total of 13 different algorithms and variants for multiclass classification. 
+
+Specifically, LIBOL consists of a family of first order online learning algorithms as follows
+- Perceptron: the classical online learning algorithm (Rosenblatt, 1958);
+- ALMA: A New ApproximateMaximal Margin Classification Algorithm Gentile (2001);
+- ROMMA: the relaxed online maxiumu margin algorithms (Li and Long, 2002);
+- OGD: the Online Gradient Descent (OGD) algorithms (Zinkevich, 2003);
+- PA: Passive Aggressive (PA) algorithms (Crammer et al., 2006);
+and a family of second order online learning algorithms as follows
+- SOP: the Second Order Perceptron (SOP) algorithm (Cesa-Bianchi et al., 2005);
+- CW: the Confidence-Weighted (CW) learning (Dredze et al., 2008);
+- IELLIP: online learning algorithms by improved ellipsoid method Yang et al. (2009);
+- AROW: the Adaptive Regularization of Weight Vectors (Crammer et al., 2009);
+- NAROW: New variant of Adaptive Regularization (Orabona and Crammer, 2010);
+- NHERD: the Normal Herding method via Gaussian Herding (Crammer and Lee, 2010)
+- SCW: the recently proposed Soft ConfidenceWeighted algorithms (Wang et al., 2012).
+
+This document briefly explains the usage of LIBOL. A more detailed manual can be found from the LIBOL web site.
+
+To get started, please read the ``Quick Start'' section first.
+For developers, please check the "run_experiment.m" to learn how to explore LIBOL for developing your new algorithms.
+
+Table of Contents
+=================
+
+- Quick Start
+- Installation
+- Examples
+- Additional Information
+
+Quick Start
+===========
+
+See the section ``Installation'' for installing LIBOL.
+
+Type "make", and then "demo" to get started 
+
+Installation
+============
+
+Simply type `make' to compile a list of core C++ programs (including "libsvmread"), and to add the paths of core algorithms ("algorithms", "algorithms_mex", "libsvm", "weka2matlab") automatically.
+
+If you do not wish to re-compile the library, you can simply type 'init' to initialize the library by adding the necessary paths. 
+
+Examples
+========
+
+>> demo
+
+Apply the online "Perceptron" algorithm on the default data set "svmguide3"
+
+Note: By default, one random trial is applied for automated parameter selection and a total of 20 runs will be applied to obtain average results; The rest is the same.
+
+>> demo('bc')
+
+Demo of binary classification. Apply the online "Perceptron" algorithm on the default data set "svmguide3"
+
+>> demo('mc')
+
+Demo of multiclass classification. Apply the online multi-class Perceptron ("PerceptronM") algorithm on the default data set "glass"
+
+>> demo('bc','PA','svmguide3')
+
+Apply the online "PA" algorithm on the matlab-format binary-class data set "svmguide3"
+
+>> demo('bc','PA','w1a','libsvm','c')
+
+Apply the online "PA" algorithm on the libsvm-format binary-class data set "w1a" (where the core function is based on the 'C' implementation).
+
+>> demo('bc','Perceptron','sonar','arff')
+
+Apply the "Perceptron" algorithm on the weka-ARFF-format data set "sonar.arff"  % This requires to install WEKA and add WEKA.jar path to the matlab Java class path
+
+>> demo('mc','M_PA','glass')
+
+Apply the online multiclass "PA" (M_PA) algorithm on the matlab-format multiclass data set "glass" (where the core function is by default using 'matlab' implementation).
+
+>> run_experiment('bc')
+
+Run the entire set of binary classification experiments for side-by-side comparisons of all algorithms on the default data set "svmguide3" (by default using matlab implementation)
+
+>> run_experiment('mc')
+
+Run the entire set of multiclass classification experiments for side-by-side comparisons of all algorithms on the default data set "glass" (by default using matlab implementation)
+
+>> run_experiment('bc','svmguide3','mat','c')
+
+Run the entire set of binary classification experiments for side-by-side comparisons of all algorithms on the matlab-format data set "svmguide3" using C implementation
+
+>> run_experiment('mc','glass','mat','c')
+
+Run the entire set of multi-class experiments for side-by-side comparisons of all algorithms on the matlab-format data set "glass" using C implementation
+
+Additional Information
+======================
+
+If you have any questions and comments, please send your email to chhoi@ntu.edu.sg
+
+For more info about LIBOL, please visit http://libol.stevenhoi.org/
+
+Last updated date: 12 December, 2013.
